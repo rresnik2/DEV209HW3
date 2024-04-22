@@ -1,45 +1,48 @@
-var Movie = function(year, title, rating) {
-  this.year = year;
-  this.title = title;
-  this.rating = rating;
-  this.isValid = function() {
-    if (this.rating < 1 || this.rating > 5) {
-      return false;
-    } else if (this.title === "" || this.title === null) {
-      return false;
-    } else if (this.year === "" || this.year === null) {
-      return false;
-    } else {
-      return true;
-    }
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  function sortTitle() {
+    movieList.sort(function(a, b) {
+      let x = a.title.toLowerCase();
+      let y = b.title.toLowerCase();
+      if (x < y) {
+        return -1;
+      }
+      if (x > y) {
+        return 1;
+      }
+      return 0;
+    });
+
   }
-}
-var movieList = [];
+  var movieList = [];
+  
+  document.getElementById("addMovie").addEventListener("click", function() {
+    console.log(document.getElementById("year").value);
+  console.log(document.getElementById("rating").value);
+  console.log(document.getElementById("title").value);
+    let movie = new Movie(document.getElementById("year").value, document.getElementById("title").value, document.getElementById("rating").value);
 
-document.addEventListener("DOMContentLoaded", function (event) {
-    // this add event listener uses an aynonomus function
-    
-    document.getElementById("addMovie").addEventListener("click", function () {
-        if (Movie(document.getElementById("year").value, document.getElementById("title").value, document.getElementById("rating").value).isValid);   //parseFloat converts string to float
-        mpg.gallons = parseFloat(document.getElementById("gallons").value);
-        if (!mpg.isValid()) {
-            alert("Both entries must be numeric " +
-                "and greater than zero");
-        } else {
-            document.getElementById("mpg").value = mpg.calculate().toFixed(1);
-            document.getElementById("clear").focus(); // enter key clicks button
-        }
-    });
+    if (!movie.isValid()) {
+      alert("Rating must be 1 - 5, title and year cannot be empty");
+    } 
+    else {
+      movieList.push(movie);
+    }
+
+  });
+
+  document.getElementById("showMovies").addEventListener("click", function() {
+    let oMovies = "<ul>";
+    sortTitle();
+    for (let i of movieList) {
+  
+      oMovies += "<li>Movie:\t" + i.title + ",\tYear:\t" + i.year + ",\tRating:\t"+ i.rating + "</li>";
+    }
+    oMovies += "</ul>";
+    document.getElementById("movieList").innerHTML = oMovies;
+
+  });
 
 
-    document.getElementById("clear").addEventListener("click", function () {
-        document.getElementById("miles").value = "";
-        document.getElementById("gallons").value = "";
-        document.getElementById("mpg").value = "";
-        
-        document.getElementById("miles").focus();
-    });
-    
-    // put the cursor where the user wants it
-    document.getElementById("miles").focus();
+
 });

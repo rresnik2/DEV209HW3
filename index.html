@@ -4,15 +4,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+  <title>HW3</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <form id="movie" name="movie">
-    <table>
+    <table id="input">
       <tr>
         <td>
-          <label for="title">Movie Title:</label>
+          <label for="title">Movie Title</label>
         </td>
         <td>
           <input type="text" id="title" name="title">
@@ -20,7 +20,7 @@
       </tr>
       <tr>
         <td>
-          <label for="year">Year:</label>
+          <label for="year">Year</label>
         </td>
         <td>
           <input type="text" id="year" name="year">
@@ -28,17 +28,18 @@
       </tr>
       <tr>
         <td>
-          <label for="rating">Rating (1-5, 5 is excellent):</label>
+          <label for="rating">Rating (1-5, 5 is excellent)</label>
         </td>
         <td>
           <input type="text" id="rating" name="rating">
         </td>
       </tr>
     </table>
-    <input type="button" id="addMovie" value="Add Movie">
-  </form>
-  <br>
-  <button>Show Movies</button>
-</body>
+    <input type="button" class="button" id="addMovie" value="Add Movie">
+  <input type="button" class="button" id="showMovies" value="Show Movies">
+  <section id="movieList"></section>
+  <script language="JavaScript" type="text/javascript" src="main.js"></script>
+  <script language="JavaScript" type="text/javascript" src="movie.js"></script>
+  </body>
 
 </html>
