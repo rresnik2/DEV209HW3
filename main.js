@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     oMovies += "</ul>";
     outputList.innerHTML = oMovies;
-    outputList.getElementById("movieList").style.display = "block";
+    outputList.style.display = "block";
   });
 
 
